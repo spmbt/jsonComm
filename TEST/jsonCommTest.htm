@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+	<script src="../src/jsonComm.js"></script>
+	<script src="jsonCommTest.js"></script>
+</head>
+<body class="forkGithub">
+<style>body.forkGithub{
+	background: url("../forkMeOnGithubGray.jpg") no-repeat scroll 0 0 #fff;}
+</style>
+	<div style="float:right">
+		<a href="http://spmbt.github.io/jsonComm/" title="to home doc"><img src="../jsonComm.png"></a>
+	</div>
+	<i style="margin-left: 72px; color:#aaa;">For developers: show results in console (F12 or F12 + F5).</i>
+	<script>
+		lH = function(logHeader, h){
+			return '====== '+ logHeader +' =================== '+ (h ? '('+ h.markU +' μs, '+ h.count +' times per '+ h.p +' ms)' :'') +'\n';
+		};
+		console.warn(lH('jComm (start string)'), jComm);
+		console.log(lH('jsonWoComm', jsonWoComm), jsonWoComm.out);
+		console.log(lH('jsonWithComm', jsonWithComm), jsonWithComm.out);
+		console.info(lH('jsObjWithComm (formatted standard stringify)')
+			, JSON.stringify(jsObjWithComm, function(key, val){ //for simple output
+				return val instanceof Array ? JSON.stringify(val): val;
+		},'\t'));
+		console.warn(lH('jCommChanges (list of changes)'), JSON.stringify(jCommChanges,0,'\t'));
+		console.log(lH('jCommChanged (modify by list)', jCommChanged), jCommChanged.out);
+		console.error('jCommNew', jCommNew);
+	</script>
+</body>
+</html>
