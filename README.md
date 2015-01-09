@@ -9,7 +9,7 @@
 * change of values of unique keys
 * convert jsonComm string from/to Yaml or XML.
 
-[Screenshots of test]((http://spmbt.github.io/jsonComm/); [test page]((http://spmbt.github.io/jsonComm/TEST/jsonCommTest.js).
+[Screenshots of test](http://spmbt.github.io/jsonComm/); [test page](http://spmbt.github.io/jsonComm/TEST/jsonCommTest.htm).
 
 ### Examples
 
@@ -76,6 +76,7 @@ var jsonWoComm = jsonComm.unComment(jComm), //returns JSON string (not guarantee
 
 ```javascript
 jComm.replace(/(?:(?:((?:\{|,)\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*"(?:\\"|[^\r\n"])*"\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*:\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:[0-9.eE+-]+|true|false|null|"(?:\\"|[^\r\n"])*"|(?!:\{|:\[))\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:\}|(?!,))\s*)?)+?|(?:((?:\[|,)\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:[0-9.eE+-]+|true|false|null|"(?:\\"|[^\r\n"])*"|(?!:\{|:\[))\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:\]|(?!,))\s*)?)+?|(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*\s*)/g,'$1$2$3$4$5$6$7$8$9$10$11$12$13$14');
+//(copy&paste)
 ```
 	
 
@@ -108,4 +109,4 @@ fs.writeFileSync('config/config.js', jsonComm.change(config, changes));
 
 ### Publications
 
-* [Commentable JSON](http://habrahabr.ru/post/247473/) (ru), 2015-01-08.
+* [Commentable JSON](http://habrahabr.ru/post/247473/) (ru), 2015-01-09.

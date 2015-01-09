@@ -24,7 +24,7 @@
 				<li>convert jsonComm string from/to Yaml or XML <i>(TODO)</i>.</li>
 			</ul>
 
-&nbsp;&nbsp;&nbsp;Show results of test of jsonComm string in browser: <a href="http://spmbt.github.io/jsonComm/TEST/jsonCommTest.js">jsonCommTest.js</a> (results will be printed in console which opened by F12).
+&nbsp;&nbsp;&nbsp;Show results of test of jsonComm string in browser: <a href="http://spmbt.github.io/jsonComm/TEST/jsonCommTest.htm">jsonCommTest.js</a> (results will be printed in console which opened by F12).
 
 <h3 style="margin-left: 72px">jsonComm syntax</h3>
 1) syntax of data is equal of JSON syntax;<br>
@@ -32,15 +32,15 @@
 <h3 style="margin-left: 72px">Results of test of jsonComm data</h3>
 1) Multiline string in jsonComm format and removing of comments:<br>
 <pre class="code">jsonWoComm = jsonComm.unComment(jComm);</pre>
-&nbsp;&nbsp;&nbsp;&nbsp;<img style="border:1px dotted #aaa" src="benchFx34-20150109-040609.png" alt="checked string"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img style="border:1px dotted #aaa" src="TEST/benchFx34-20150109-040609.png" alt="checked string"><br>
 <br>
 2) Save of comments in valid pair "key#":"surrounding comments":<br>
 <pre class="code">jsonWithComm = jsonComm.comm2json(jComm);</pre>
-&nbsp;&nbsp;&nbsp;&nbsp;<img style="border:1px dotted #aaa" src="benchFx34-jsonWithComm-20150109-041422.png" alt="to JSON w/o comments"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img style="border:1px dotted #aaa" src="TEST/benchFx34-jsonWithComm-20150109-041422.png" alt="to JSON w/o comments"><br>
 <br>
 3) Replace some keys and values by structure jCommChanges:<br>
 <pre class="code">jCommChanged = jsonComm.change(jComm, jCommChanges);</pre>
-&nbsp;&nbsp;&nbsp;&nbsp;<img style="border:1px dotted #aaa" src="benchFx34-change-20150109-041609.png" alt="change some keys and values with save comments" title="change some keys and values with save comments"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img style="border:1px dotted #aaa" src="TEST/benchFx34-change-20150109-041609.png" alt="change some keys and values with save comments" title="change some keys and values with save comments"><br>
 <br>
 All 3 functions are size of 2.1KB of minified code. First function have version of 1 KB of non-compressed code.<br>
 <br>
