@@ -45,8 +45,8 @@ Test this string in browser: [jsonCommTest.js](http://spmbt.github.io/jsonComm/T
 ```javascript
 var jsonWoComm = jsonComm.unComment(jComm), //returns JSON string (not guarantees)
 	jsonWithComm = jsonComm.comm2json(jComm)
-	,jsonString = JSON.stringify(jsonComm.parse(jsonWoComm))
-
+	,jsonString = JSON.stringify(JSON.parse(jsonWoComm))
+	
 	//to JSON with key-value comments
 	//..."bbb#": "comment (not pure JSON syntax)",
 	//  "bbb": 1234, ...
@@ -57,7 +57,7 @@ var jsonWoComm = jsonComm.unComment(jComm), //returns JSON string (not guarantee
 	
 	//direct convert to XML (TODO)
 	,xmlStringDirect = jsonComm.toXml(jComm)
-
+	
 	//change any value of unique key in JSON format (from begin of line)
 	,jCommChanged = jsonComm.change(jComm, {multiline1: 'newValue'})
 	//returns string with saving of all comments and other non-JSON elements
@@ -85,10 +85,27 @@ errorParse - (TODO) exception of parse error of jComm string to some format.
 
 	jsonComm.on('errorParse', function(){console.error('errorParse')}
 
-## You may contribute *todos* and new parts of jsonComm lib
+## How to use it in NodeJS (Gruntfile.js etc...)
+
+```javascript
+var configFile = fs.readFileSync('config/config.js').toString('utf-8');
+config = JSON.parse(configFile.replace(/(?:(?:((?:\{|,)\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*"(?:\\"|[^\r\n"])*"\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*:\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:[0-9.eE+-]+|true|false|null|"(?:\\"|[^\r\n"])*"|(?!:\{|:\[))\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:\}|(?!,))\s*)?)+?|(?:((?:\[|,)\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:[0-9.eE+-]+|true|false|null|"(?:\\"|[^\r\n"])*"|(?!:\{|:\[))\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:\]|(?!,))\s*)?)+?|(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*\s*)/g,'$1$2$3$4$5$6$7$8$9$10$11$12$13$14') );
+//... use config object if not need to change file config.js.
+```
+
+If it need to change, use 2 functions, .unComment and .change in jsonComm object.
+
+```javascript
+config = JSON.parse(jsonComm.unComment(fs.readFileSync('config/config.json',{encoding:'utf-8'})));
+//... calc changes ...
+var changes = {version: newVersion}; //for example
+fs.writeFileSync('config/config.js', jsonComm.change(config, changes));
+```
+
+### \*You may contribute *todos* and new parts of jsonComm lib\*
 
 (subj)
 
 ### Publications
 
-* [Commentable JSON](http://habrahabr.ru/users/spmbt/topics/) (ru), 2015-01-08.
+* [Commentable JSON](http://habrahabr.ru/post/247473/) (ru), 2015-01-08.
