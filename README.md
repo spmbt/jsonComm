@@ -1,12 +1,12 @@
 ## JSON with comments and change values
 
-***jsonComm format of data*** is multiline string format like JSON or YAML but it have single line and multiline comments.
+***jsonComm format of data*** is multiline string format like JSON or YAML but it have single line or multiline comments.
 
 ***jsonComm object*** contains methods for 
 
 * convert data to JSON string without comments
 * convert to JSON with comments added before associated key-value pairs
-* change of values of unique keys
+* change of values of unique keys with keeping comments
 * convert jsonComm string from/to Yaml or XML.
 
 [Screenshots](http://spmbt.github.io/jsonComm/) of test; [online test page](http://spmbt.github.io/jsonComm/TEST/jsonCommTest.htm).
@@ -86,18 +86,19 @@ errorParse - (TODO) exception of parse error of jComm string to some format.
 
 	jsonComm.on('errorParse', function(){console.error('errorParse')}
 
-## How to use it in NodeJS (Gruntfile.js etc...)
+## How to use it in NodeJS (Gruntfile.js etc...) and JS
 
 ```javascript
-var configFile = fs.readFileSync('config/config.js').toString('utf-8');
-config = JSON.parse(configFile.replace(/(?:(?:((?:\{|,)\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*"(?:\\"|[^\r\n"])*"\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*:\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:[0-9.eE+-]+|true|false|null|"(?:\\"|[^\r\n"])*"|(?!:\{|:\[))\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:\}|(?!,))\s*)?)+?|(?:((?:\[|,)\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:[0-9.eE+-]+|true|false|null|"(?:\\"|[^\r\n"])*"|(?!:\{|:\[))\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:\]|(?!,))\s*)?)+?|(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*\s*)/g,'$1$2$3$4$5$6$7$8$9$10$11$12$13$14') );
+var configFile = fs.readFileSync('config/config.js').toString('utf-8')
+	,config = JSON.parse(configFile.replace(/(?:(?:((?:\{|,)\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*"(?:\\"|[^\r\n"])*"\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*:\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:[0-9.eE+-]+|true|false|null|"(?:\\"|[^\r\n"])*"|(?!:\{|:\[))\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:\}|(?!,))\s*)?)+?|(?:((?:\[|,)\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:[0-9.eE+-]+|true|false|null|"(?:\\"|[^\r\n"])*"|(?!:\{|:\[))\s*)(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*(\s*(?:\]|(?!,))\s*)?)+?|(?:(?:\s*(?:\/\/|#)[^\r\n]*(\r?\n|$))*(?:\s*\/\*\*\/|\s*\/\*(?:[\s\S]?(?!\*\/))+.{3})*)*\s*)/g,'$1$2$3$4$5$6$7$8$9$10$11$12$13$14') );
 //... use config object if not need to change file config.js.
 ```
 
 If it need to change, use 2 functions, .unComment and .change in jsonComm object.
 
 ```javascript
-config = JSON.parse(jsonComm.unComment(fs.readFileSync('config/config.json',{encoding:'utf-8'})));
+var config = JSON.parse(jsonComm.unComment(fs.readFileSync('config/config.js'
+	,{encoding:'utf-8'})));
 //... calc changes ...
 var changes = {version: newVersion}; //for example
 fs.writeFileSync('config/config.js', jsonComm.change(config, changes));
