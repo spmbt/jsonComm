@@ -9,7 +9,7 @@
 * change of values of unique keys
 * convert jsonComm string from/to Yaml or XML.
 
-[Screenshots of test](http://spmbt.github.io/jsonComm/); [test page](http://spmbt.github.io/jsonComm/TEST/jsonCommTest.htm).
+[Screenshots](http://spmbt.github.io/jsonComm/) of test; [online test page](http://spmbt.github.io/jsonComm/TEST/jsonCommTest.htm).
 
 ### Examples
 
@@ -110,3 +110,16 @@ fs.writeFileSync('config/config.js', jsonComm.change(config, changes));
 ### Publications
 
 * [Commentable JSON](http://habrahabr.ru/post/247473/) (ru), 2015-01-09.
+
+### Similar projects
+
+* [Standard JSON](http://www.json.org/)
+* [Why D.Crockford delete comments from the standard?](https://plus.google.com/+DouglasCrockfordEsq/posts/RK8qyGVaGSr)
+* <a href="http://rfc7159.net/rfc7159">rfc-7159 (March, 2014): latest standard recommendations</a>;
+* "<a href="http://stackoverflow.com/questions/244777/can-i-comment-a-json-file">Can I comment a JSON file?</a>" on the SO;
+* <a href="http://blog.getify.com/json-comments/">JSON.minify() (blog)</a> and <a href="http://github.com/getify/JSON.minify">Github</a>
+* <a href="https://github.com/sindresorhus/grunt-strip-json-comments">grunt-</a> , <a href="https://github.com/sindresorhus/gulp-strip-json-comments">gulp</a>, <a href="https://github.com/sindresorhus/broccoli-strip-json-comments">broccoli-</a>, <a href="https://github.com/sindresorhus/strip-json-comments">strip-json-comments (Github)</a>
+* <a href="https://github.com/numbcoder/json-comments">JSON Comments</a> (another author);
+* <a href="http://bolinfest.com/essays/json.html">Suggested Improvements to JSON</a> (article, 2011)
+* <a href="http://json5.org/">JSON5</a> (reults of ideas similar to prev., JS)
+* <a href="http://laktak.github.io/hjson/">Hjson, the Human JSON</a> (Hjson keep my comments when updating a config file; JS, Python, C#)
