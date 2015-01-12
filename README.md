@@ -31,7 +31,7 @@ var jComm = '//first line\n\
 		5,6,[[/*0*/7,{"x":/*xx*/"x"}],8]],{}]  ],\n\
 	"mayBeAnyStructure":{"a":1/**/,"b":2},\n\
 "lineEnd\\\\":"end"\n\
-}//after json\n  \n /*2*/  ';
+}//after json\n  \n /*2nd after*/  ';
 
 	//NOTE for this string: any single backslash will be incorrect example
 	//  because it will be shielding symbol for next and have sense
@@ -111,6 +111,10 @@ fs.writeFileSync('config/config.js', jsonComm.change(config, changes));
 ### Publications
 
 * [Commentable JSON](http://habrahabr.ru/post/247473/) (ru), 2015-01-09.
+
+### License
+
+[LGPL v.3](http://www.gnu.org/licenses/lgpl-3.0.html)
 
 ### Similar projects
 
