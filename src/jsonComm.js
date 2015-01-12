@@ -39,11 +39,10 @@ JsonComm.prototype ={
 			for(var i in ii)
 				a[ii[i]] && (s += a[ii[i]]);
 			if(a[4] && (a[2] || a[3] || a[5] || a[6] || a[8] || a[9] || a[11] || a[12]))
-				s = s.replace(/("\s*:).*/, '#$1"'
+				s = s.replace(/("\s*:).*/, '#$1'
 					+ th._quotEsc(s0.replace(RegExp('^.|\\s*'+ a[4].replace(/\\/g,'\\\\') +'\\s*:'
 							+(a[10] && '|\\s*'+ a[10] +'\\s*') +'|\\s*$', 'g'),''))
-						.replace(/\}$/,'')
-						+ '"')
+						.replace(/\}$/,''))
 					+ ((s0.match(/\r?(\n\s*)/) ||[])[0] ||'')
 					+ s.replace(/^\{/, ',');
 			return s;
@@ -58,17 +57,17 @@ JsonComm.prototype ={
 		return jC.replace(this._rCh, function(s0){
 			var a = arguments, i, aL;
 			if(a[3] && (a[7] || a[7]==='')){ //pair is found
-				var key = a[3].replace(/^\s*"((?:\\"|[^\r\n"])*)"\s*/,'$1');
-				if(h2[key] !=null){
-					if(typeof h2[key] == 'object' && Object.keys && Object.keys(h2[key])){
-						var newKey = Object.keys(h2[key])[0];
-						a[3] = a[3].match(/^(\s*)/)[0] + '"' + th._quotEsc(newKey) + '"' + a[3].match(/(\s*)$/)[0];
+				var h2key = h2[a[3].replace(/^\s*("(?:\\"|[^\r\n"])*")\s*/,'$1')];
+				if(h2key !=null){
+					if(typeof h2key == 'object' && Object.keys && Object.keys(h2key)){
+						var newKey = Object.keys(h2key)[0];
+						a[3] = a[3].match(/^(\s*)/)[0] + th._quotEsc(newKey) + a[3].match(/(\s*)$/)[0];
 					}
 					if(a[7] && a[7] !==''){
-						var newVal = typeof h2[key] !='object' ? h2[key]
-							: newKey !=null && h2[key][newKey];
+						var newVal = typeof h2key !='object' ? h2key
+							: newKey !=null && h2key[newKey];
 						a[7] = a[7].match(/^(\s*)/)[0]
-							+ (typeof newVal =='string'? '"' + th._quotEsc(newVal) + '"': newVal) + a[7].match(/(\s*)$/)[0];
+							+ (typeof newVal =='string'? th._quotEsc(newVal) : newVal) + a[7].match(/(\s*)$/)[0];
 					}
 					for(s0 ='', i = 1, aL = a.length -2; i < aL; i++)
 						s0 += a[i] ||'';
@@ -77,8 +76,8 @@ JsonComm.prototype ={
 		});
 	},
 	_quotEsc: function(s){ //prepare string for overquotting
-		return s.replace(/"/g,'\\"').replace(/\\(?!")/g,'\\\\')
-			.replace(/\r?\n/g,'\\n').replace(/\t/g,'\\t');
+		return '"'+ s.replace(/"/g,'\\"').replace(/\\(?!")/g,'\\\\')
+			.replace(/\r?\n/g,'\\n').replace(/\t/g,'\\t') +'"';
 	},
 	fromYaml: function(s){ //with exceptions on errors
 		;//TODO for free contribution

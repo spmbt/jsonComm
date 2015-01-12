@@ -122,5 +122,5 @@ fs.writeFileSync('config/config.js', jsonComm.change(config, changes));
 * <a href="https://github.com/sindresorhus/grunt-strip-json-comments">grunt-</a> , <a href="https://github.com/sindresorhus/gulp-strip-json-comments">gulp</a>, <a href="https://github.com/sindresorhus/broccoli-strip-json-comments">broccoli-</a>, <a href="https://github.com/sindresorhus/strip-json-comments">strip-json-comments (Github)</a>
 * <a href="https://github.com/numbcoder/json-comments">JSON Comments</a> (another author);
 * <a href="http://bolinfest.com/essays/json.html">Suggested Improvements to JSON</a> (article, 2011)
-* <a href="http://json5.org/">JSON5</a> (reults of ideas similar to prev., JS)
+* <a href="http://json5.org/">JSON5</a> (results of ideas similar to prev., JS)
 * <a href="http://laktak.github.io/hjson/">Hjson, the Human JSON</a> (Hjson keep my comments when updating a config file; JS, Python, C#)
