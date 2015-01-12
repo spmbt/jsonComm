@@ -1,4 +1,5 @@
-/** JsonComm comments remover in JSON-like structures. Prod version */
+/** JsonComm comments remover in JSON-like structures. @spmbt
+ * license: http://www.gnu.org/licenses/lgpl-3.0.html */
 (function(global){
 
 
